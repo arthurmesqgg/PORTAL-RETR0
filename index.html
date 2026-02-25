@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+    <!-- O loader.js será carregado dinamicamente ao clicar no botão -->
+<title>PORTAL RETR0</title>
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    font-family: 'Press Start 2P', cursive;
+    color: rgb(85, 81, 81);
+    text-align: center;
+}
+
+#logo {
+    margin-top: 20px;
+}
+
+#emulador-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+#emulador-area button {
+    margin-bottom: 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 14px;
+    padding: 12px 24px;
+    background: #222;
+    color: #fff;
+    border: 2px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+#emulador-area button:hover {
+    background: #444;
+    color: #ff5e00;
+    transform: scale(1.05);
+}
+
+#emulador-area button:active {
+    transform: scale(0.95);
+}
+
+</style>
+</head>
+
+<body>
+
+    <img id="logo" src="portal retro.png" width="800" weight="600">
+    <h5>JOGUE CLÁSSICOS DIRETO DO NAVEGADOR!</h5>
+
+    <div id="emulador-area">
+        <button onclick="loadGame('Pokemon Fire Red','PokemonFireRed.zip','gba')">Pokémon Fire Red</button>
+
+        <button onclick="loadGame('Contra','Contra.zip','nes')">Contra</button>
+
+        <button onclick="loadGame('Sonic 1','Sonic 1.zip','segaMD')">Sonic 1</button>
+
+        <button onclick="loadGame('Super Mario World','Mario World.zip','snes')">Super Mario World</button>
+
+        <div id="emulator-container" style="width:640px;height:480px;margin:20px auto 0 auto;"></div>
+    </div>
+
+    <script>
+function loadGame(nome, arquivo, core, bios = '') {
+
+    // Limpa área do emulador
+    var container = document.getElementById('emulator-container');
+    container.innerHTML = '<div id="game"></div>';
+
+    // Define configurações do EmulatorJS
+    window.EJS_player = '#game';
+    window.EJS_gameName = nome;
+    window.EJS_biosUrl = bios;
+    window.EJS_gameUrl = arquivo;
+    window.EJS_core = core;
+    window.EJS_pathtodata = 'emulator.js/data/';
+    window.EJS_startOnLoaded = true;
+    window.EJS_disableDatabases = true;
+
+    // Remove loader antigo se existir
+    var oldScript = document.getElementById('loaderScript');
+    if (oldScript) oldScript.remove();
+
+    // Cria novo loader
+    var script = document.createElement('script');
+    script.id = 'loaderScript';
+    script.src = 'emulator.js/data/loader.js';
+    document.body.appendChild(script);
+}
+</script>
+
+<button id="Tela-Cheia" onclick="document.querySelector('#game canvas').requestFullscreen()">
+Tela Cheia
+</button>
+
+<p id="descricao-site">
+Esse é o segundo site que eu crio, fiz apenas por diversão e experiência na área de criar sites e etc, além de garantir diversão
+pro pessoal que só quer se divertir com jogos clássicos sem ter que ficar baixando emulador no pc e toda essa coisa complicada (e sem anúncios chatos).
+Para quem é curioso, criei o site com as seguintes ferramentas: Visual Studio Code, Emulator.JS (para emular os jogos), e HTML.
+CRIADO POR ARTHUR, 19/02/26.
+</p>
+
+</body>
+</html>

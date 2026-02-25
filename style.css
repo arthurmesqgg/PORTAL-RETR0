@@ -1,0 +1,91 @@
+
+
+/* 1. Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Estilos globais */
+body {
+  font-family: 'Press Start 2P', cursive;
+  background: #000000;
+  color: #eee;
+  line-height: 1.5;
+}
+
+/* 3. Containers principais */
+header {
+  background: #000000;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+}
+
+footer {
+  background: #000000;
+  color: #aaa;
+  text-align: center;
+  padding: 10px;
+}
+
+/* 4. Classes e IDs */
+.doom-text {
+  color: rgb(255, 60, 0);
+  margin-left: 40px;
+  text-align: left;
+}
+
+/* 5. Responsividade */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+#emulador-area button {
+    margin-bottom: 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    padding: 12px 24px;
+    background: #222;
+    color: #ffffff;
+    border: 2px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+#emulador-area button:hover {
+    background: #444;
+    color: #ff5e00;
+    transform: scale(1.05);
+}
+
+#emulador-area button:active {
+    transform: scale(0.95);
+}
+
+#descricao-site {
+    color:#444;
+    margin-top: 80px;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+#Tela-Cheia button {
+  margin-bottom: 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    padding: 12px 24px;
+    background: #222;
+    color: #ffffff;
+    border: 2px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+}
