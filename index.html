@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
 <meta charset="UTF-8">
-    <!-- O loader.js será carregado dinamicamente ao clicar no botão -->
-<title>PORTAL RETR0</title>
-
-
+<title>PORTAL RETRO</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
@@ -19,15 +15,10 @@ body {
     text-align: center;
 }
 
-#logo {
-    margin-top: 20px;
-}
-
 #emulador-area {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     margin-top: 40px;
 }
 
@@ -41,7 +32,7 @@ body {
     border: 2px solid #555;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s, transform 0.1s;
+    transition: 0.2s;
 }
 
 #emulador-area button:hover {
@@ -50,69 +41,66 @@ body {
     transform: scale(1.05);
 }
 
-#emulador-area button:active {
-    transform: scale(0.95);
+#emulator-container {
+    width: 640px;
+    height: 480px;
+    margin: 20px auto;
 }
-
 </style>
 </head>
 
 <body>
 
-    <img id="logo" src="portal retro.png" width="800" weight="600">
-    <h5>JOGUE CLÁSSICOS DIRETO DO NAVEGADOR!</h5>
+<h2>PORTAL RETRO</h2>
+<p>JOGUE CLÁSSICOS DIRETO DO NAVEGADOR</p>
 
-    <div id="emulador-area">
-        <button onclick="loadGame('Pokemon Fire Red','PokemonFireRed.zip','gba')">Pokémon Fire Red</button>
+<div id="emulador-area">
 
-        <button onclick="loadGame('Contra','Contra.zip','nes')">Contra</button>
+<button onclick="carregarJogo('Pokemon Fire Red','PokemonFireRed.zip','gba')">
+Pokémon Fire Red
+</button>
 
-        <button onclick="loadGame('Sonic 1','Sonic 1.zip','segaMD')">Sonic 1</button>
+<button onclick="carregarJogo('Contra','Contra.zip','nes')">
+Contra
+</button>
 
-        <button onclick="loadGame('Super Mario World','Mario World.zip','snes')">Super Mario World</button>
+<button onclick="carregarJogo('Sonic','Sonic.zip','genesis')">
+Sonic
+</button>
 
-        <div id="emulator-container" style="width:640px;height:480px;margin:20px auto 0 auto;"></div>
-    </div>
+<button onclick="carregarJogo('Super Mario World','MarioWorld.zip','snes')">
+Super Mario World
+</button>
 
-    <script>
-function loadGame(nome, arquivo, core, bios = '') {
+<div id="emulator-container"></div>
 
-    // Limpa área do emulador
-    var container = document.getElementById('emulator-container');
+</div>
+
+<script>
+function carregarJogo(nome, arquivo, core) {
+
+    const container = document.getElementById("emulator-container");
     container.innerHTML = '<div id="game"></div>';
 
-    // Define configurações do EmulatorJS
-    window.EJS_player = '#game';
+    const oldScript = document.getElementById("emulator-loader");
+    if (oldScript) oldScript.remove();
+
+    window.EJS_player = "#game";
     window.EJS_gameName = nome;
-    window.EJS_biosUrl = bios;
     window.EJS_gameUrl = arquivo;
     window.EJS_core = core;
-    window.EJS_pathtodata = 'emulator.js/data/';
+    window.EJS_pathtodata = "https://cdn.emulatorjs.org/latest/data/";
     window.EJS_startOnLoaded = true;
     window.EJS_disableDatabases = true;
 
-    // Remove loader antigo se existir
-    var oldScript = document.getElementById('loaderScript');
-    if (oldScript) oldScript.remove();
+    const script = document.createElement("script");
+    script.id = "emulator-loader";
+    script.src = "https://cdn.emulatorjs.org/latest/data/loader.js";
+    script.async = true;
 
-    // Cria novo loader
-    var script = document.createElement('script');
-    script.id = 'loaderScript';
-    script.src = 'emulator.js/data/loader.js';
     document.body.appendChild(script);
 }
 </script>
-
-<button id="Tela-Cheia" onclick="document.querySelector('#game canvas').requestFullscreen()">
-Tela Cheia
-</button>
-
-<p id="descricao-site">
-Esse é o segundo site que eu crio, fiz apenas por diversão e experiência na área de criar sites e etc, além de garantir diversão
-pro pessoal que só quer se divertir com jogos clássicos sem ter que ficar baixando emulador no pc e toda essa coisa complicada (e sem anúncios chatos).
-Para quem é curioso, criei o site com as seguintes ferramentas: Visual Studio Code, Emulator.JS (para emular os jogos), e HTML.
-CRIADO POR ARTHUR, 19/02/26.
-</p>
 
 </body>
 </html>
