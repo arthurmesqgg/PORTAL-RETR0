@@ -63,7 +63,7 @@ body {
 
 <body>
 
-<img id="logo" src="portal retro.png" width="800">
+<img id="logo" src="portal retro.png" width="900">
 
 <h5>JOGUE CLÁSSICOS DIRETO DO NAVEGADOR!</h5>
 
@@ -100,6 +100,47 @@ Tela Cheia
 </button>
 
 </div>
+
+<button class="btn-arcade" onclick="toggleAjuda()">Ajuda</button>
+
+
+<div id="secao-ajuda" style="display: none; max-width:800px; margin:40px auto; text-align:center;">
+    <h1>-MANUAL DE AJUDA-</h1>
+
+    <h2>O USO DE UM JOYSTICK É ALTAMENTE RECOMENDADO</h2>
+
+    <h3>🎮 CONTROLES</h3>
+    <p>
+    SETAS → Movimento<br>
+    Z / X → Botões principais<br>
+    Enter → Start<br>
+    Shift → Select<br>
+    Você pode mudar as configs do controle a qualquer momento clicando no ícone de controle 🎮 dentro do emulador.
+    </p>
+
+    <h3>💾 SALVAR</h3>
+    <p>
+    Clique no ícone de disquete ←💾 dentro do emulador.<br>
+    Vá em “Save State” para salvar seu progresso no jogo.<br>
+    Use “Load State” para carregar um jogo salvo.<br>
+    AVISO: O save é apagado se limpar os dados do navegador.
+    </p>
+
+    <h3>▭ TELA CHEIA</h3>
+    <p>
+    Use o botão "Tela Cheia" abaixo do jogo para colocar o jogo em tela cheia. Certifique-se de carregar um jogo primeiro, caso contrário, a função de tela cheia não funcionará.<br>
+    Para sair do modo de tela cheia, pressione a tecla "Esc" no teclado.
+    </p>
+
+    <h3>🎮 JOYSTICK</h3>
+    <p>
+    Controles via USB e BLUETHOOTH funcionam automaticamente, basta conectar no PC.
+    </p>
+</div>
+
+<p id="AVISO">
+AVISO: O SITE NÃO FUNCIONA NO CELULAR, APENAS EM COMPUTADORES
+</p>
 
 <p id="descricao-site">
 Esse é um dos primeiros sites que criei, fiz apenas por diversão e experiência na área de web design,
@@ -143,6 +184,18 @@ function ativarTelaCheia() {
         canvas.requestFullscreen();
     } else {
         alert("Carregue um jogo primeiro!");
+    }
+}
+</script>
+
+<script>
+function toggleAjuda() {
+    var secao = document.getElementById("secao-ajuda");
+
+    if (secao.style.display === "none") {
+        secao.style.display = "block";
+    } else {
+        secao.style.display = "none";
     }
 }
 </script>
