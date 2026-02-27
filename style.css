@@ -1,6 +1,6 @@
 
 
-/* 1. Reset básico */
+/* 1. Básico */
 * {
   margin: 0;
   padding: 0;
@@ -78,7 +78,28 @@ footer {
 }
 
 #Tela-Cheia button {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    padding: 12px 24px;
+    background: #222;
+    color: #ffffff;
+    border: 2px solid #555;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+#AVISO {
+  color:#ff5e00;
+  margin-top: 80px;
+  padding: 20px;
+  line-height: 1.6;
+
+}
+
+#secao-ajuda button:active {
+    margin-bottom: 20px;
     font-family: 'Press Start 2P', cursive;
     font-size: 16px;
     padding: 12px 24px;
