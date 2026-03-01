@@ -69,6 +69,7 @@ body {
 
 <div id="emulador-area">
 
+
 <button onclick="loadGame('Pokemon Fire Red','PokemonFireRed.zip','gba')">
 Pokémon Fire Red
 </button>
@@ -83,6 +84,10 @@ Mortal Kombat
 
 <button onclick="loadGame('Sonic 1','Sonic1.zip','segaMD')">
 Sonic 1
+</button>
+
+<button onclick="loadGame('Resident Evil 3','RE3.zip','psx')">
+Resident Evil 3
 </button>
 
 <button onclick="loadGame('Cadillac Dinossaur','CD.zip','segaMD')">
@@ -139,7 +144,7 @@ Tela Cheia
 </div>
 
 <p id="AVISO">
-AVISO: O SITE NÃO FUNCIONA NO CELULAR, APENAS EM COMPUTADORES
+AVISO: O SITE NÃO FUNCIONARÁ EM CELULARES, APENAS EM COMPUTADORES
 </p>
 
 <p id="descricao-site">
@@ -147,7 +152,7 @@ Esse é um dos primeiros sites que criei, fiz apenas por diversão e experiênci
 além de garantir diversão para o pessoal que só quer jogar clássicos direto do navegador,
 sem ter que baixar emuladores e assistir anúncios chatos.
 <br><br>
-Ferramentas utilizadas: Visual Studio Code, EmulatorJS e HTML.
+Ferramentas utilizadas: Visual Studio Code, EmulatorJS, CSS e HTML.
 <br>
 CRIADO POR ARTHUR — 19/02/26.
 </p>
@@ -177,15 +182,31 @@ function loadGame(nome, arquivo, core) {
     document.body.appendChild(script);
 }
 
-// Tela cheia segura
+// Tela cheia
+
 function ativarTelaCheia() {
-    const canvas = document.querySelector('#game canvas');
-    if (canvas) {
-        canvas.requestFullscreen();
+    const gameContainer = document.getElementById('game');
+
+    if (gameContainer) {
+        gameContainer.requestFullscreen();
+
+        // Força foco depois de entrar em tela cheia
+        setTimeout(() => {
+            gameContainer.focus();
+        }, 300);
+
     } else {
         alert("Carregue um jogo primeiro!");
     }
 }
+
+// Sempre que entrar em fullscreen, reforça o foco
+document.addEventListener("fullscreenchange", function() {
+    const gameContainer = document.getElementById("game");
+    if (document.fullscreenElement && gameContainer) {
+        gameContainer.focus();
+    }
+});
 </script>
 
 <script>
